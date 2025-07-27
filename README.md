@@ -36,7 +36,7 @@ A modern and user-friendly Flutter-based Android application designed to help us
 ## 📷 Screenshots
 
 <div style="display: flex; overflow-x: auto; gap: 10px; padding: 10px 0;">
-  <img src="screenshots/Screenshot 2025-07-27 151732.png" alt="Splash Screen" height="500">
+  <img src="[screenshots/Screenshot 2025-07-27 151732.png](https://raw.githubusercontent.com/khushiakter10/quran_app/refs/heads/main/screenshorts/Screenshot%202025-07-27%20151732.png)" alt="Splash Screen" height="500">
   <img src="screenshots/onboarding1.png" alt="Onboarding Screen" height="500">
   <img src="screenshots/login.png" alt="Login Screen" height="500">
   <img src="screenshots/surah-list.png" alt="Surah List" height="500">
