@@ -36,13 +36,11 @@ A modern and user-friendly Flutter-based Android application designed to help us
 ## 📷 Screenshots
 
 <div style="display: flex; overflow-x: auto; gap: 10px; padding: 10px 0;">
-  <img src="[screenshots/Screenshot 2025-07-27 151732.png](https://raw.githubusercontent.com/khushiakter10/quran_app/refs/heads/main/screenshorts/Screenshot%202025-07-27%20151732.png)" alt="Splash Screen" height="500">
-  <img src="screenshots/onboarding1.png" alt="Onboarding Screen" height="500">
-  <img src="screenshots/login.png" alt="Login Screen" height="500">
-  <img src="screenshots/surah-list.png" alt="Surah List" height="500">
-  <img src="screenshots/quran-academy.png" alt="Quran Academy" height="500">
-  <img src="screenshots/news.png" alt="News Page" height="500">
-  <img src="screenshots/audio-quran.png" alt="Audio Quran" height="500">
+  <img src="https://raw.githubusercontent.com/khushiakter10/quran_app/main/screenshorts/Screenshot%202025-07-27%20151732.png" alt="Splash Screen" height="500">
+  <img src="https://raw.githubusercontent.com/khushiakter10/quran_app/main/screenshorts/Screenshot%202025-07-27%20151825.png" alt="Onboarding" height="500">
+  <img src="https://raw.githubusercontent.com/khushiakter10/quran_app/main/screenshorts/Screenshot%202025-07-27%20151845.png" alt="Login" height="500">
+  <img src="https://raw.githubusercontent.com/khushiakter10/quran_app/main/screenshorts/Screenshot%202025-07-27%20152006.png" alt="Surah List" height="500">
+  <img src="https://raw.githubusercontent.com/khushiakter10/quran_app/main/screenshorts/Screenshot%202025-07-27%20152035.png" alt="Quran Academy" height="500">
 </div>
 
 ---
@@ -62,8 +60,8 @@ Follow these steps to set up the project locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/quran-app.git
-cd quran-app
+git clone https://github.com/khushiakter10/quran_app.git
+cd quran_app
 
 # Get Flutter dependencies
 flutter pub get
