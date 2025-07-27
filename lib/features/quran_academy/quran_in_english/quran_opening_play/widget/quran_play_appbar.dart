@@ -1,0 +1,117 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:quran_app/assets_helper/app_colors.dart';
+import 'package:quran_app/assets_helper/app_fonts.dart';
+import 'package:quran_app/assets_helper/app_icons.dart';
+import 'package:quran_app/helpers/navigation_service.dart';
+import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
+import 'package:quran_app/helpers/ui_helpers.dart';
+
+class QuranPlayAppbar extends StatelessWidget {
+  final bool showIcon;
+  final String text;
+  final String? subtitle;
+  final VoidCallback? onTap;
+  final Widget? icon;
+  final TextStyle? textStyle;
+  final TextStyle? subtitleStyle;
+
+  const QuranPlayAppbar({
+    Key? key,
+    required this.text,
+    this.subtitle,
+    this.showIcon = false,
+    this.onTap,
+    this.icon,
+    this.textStyle,
+    this.subtitleStyle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final currentTheme = UiDarkModeHelper.getCurrentTheme(context);
+    final isStarfield = currentTheme == UiDarkModeHelper.starfieldTheme;
+    final isLight = currentTheme == UiDarkModeHelper.lightTheme;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 12.h),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ///===========Back Button===========
+          GestureDetector(
+            onTap: onTap ?? () {
+              NavigationService.goBack();
+            },
+            child: Container(
+              padding: EdgeInsets.all(12.sp),
+              decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(
+                    width: 1,
+                    color: Color(0xFF969696),
+                  ),
+                  borderRadius: BorderRadius.circular(40.r),
+                ),
+              ),
+              child: SvgPicture.asset(
+                AppIcons.arrowrights,
+                height: 16.h,
+                color: isStarfield
+                    ? const Color(0xFFFEFEFE)
+                    : (isLight ? Colors.black : Colors.white),
+              ),
+            ),
+          ),
+          UIHelper.horizontalSpace(16.w),
+
+          ///================Title, Icon, and Subtitle==========
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        text,
+                        style: textStyle ??
+                            TextFontStyle.textStyle32w700cwhiteCormorantGaramond.copyWith(
+                              fontSize: 24.sp,
+                                color: isStarfield
+                                    ? AppColors.cF9F6F0
+                                    : (UiDarkModeHelper.isDarkMode(context)
+                                    ?  AppColors.cF9F6F0
+                                    :  AppColors.c060606)
+                            ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+                if (subtitle != null) ...[
+                  UIHelper.verticalSpace(4.h),
+                  Text(
+                    subtitle!,
+                    style: subtitleStyle ??
+                        TextFontStyle.textStyle12w500FEFEFERaleway.copyWith(
+                          fontSize: 16.sp,
+
+                            color: isStarfield
+                                ? AppColors.cF9F6F0
+                                : (UiDarkModeHelper.isDarkMode(context)
+                                ?  AppColors.cF9F6F0
+                                :  AppColors.c060606)
+                        ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
