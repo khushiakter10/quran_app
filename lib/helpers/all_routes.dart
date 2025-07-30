@@ -61,7 +61,7 @@ import 'package:quran_app/features/vocabulary/letter/presentation/letter_screen.
 import 'package:quran_app/features/vocabulary/vocabulary_tajweed/presentation/vocabulary_screen.dart';
 import '../features/news/presentation/gibla_screen.dart';
 import '../features/read_quran_juz/juz_english_translation/presentation/juz_english_translation_screen.dart';
-import '../features/screen.dart';
+
 
 final class Routes {
   static final Routes _routes = Routes._internal();

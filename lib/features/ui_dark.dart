@@ -1,4 +1,5 @@
-// ✅ FILE: ui_dark_mode_controller.dart
+
+
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -14,52 +15,7 @@ class UiDarkModeController with ChangeNotifier {
     'Naskh Quran',
   ];
 
-  // =================== Reading Type ===================
-  String _selectedReadingType = 'Juz Style';
-  String get selectedReadingType => _selectedReadingType;
-
-  Future<void> loadSelectedReadingType() async {
-    _selectedReadingType = _storage.read('selectedReadingType') ?? 'Juz Style';
-  }
-
-  Future<void> saveSelectedReadingType(String type) async {
-    _selectedReadingType = type;
-    await _storage.write('selectedReadingType', type);
-    notifyListeners();
-  }
-
-  // =================== Font Management ===================
-  double _fontSize = 16.0;
-  String _fontFamily = 'MADDINA';
-  List<double> _sliderValues = [0.5, 0.5, 0.5];
-
-  // =================== Theme Management ===================
-  bool _isDarkMode = false;
-  Color _appColor = Colors.white;
-  String _theme = 'starfield';
-  String _currentRoute = '/home';
-
-  UiDarkModeController() {
-    loadAllPreferences(); // Load everything on init
-  }
-
-  double get fontSize => _fontSize;
-  String get fontFamily => _fontFamily;
-  List<double> get sliderValues => _sliderValues;
-  bool get isDarkMode => _isDarkMode;
-  Color get appColor => _appColor;
-  String get theme => _theme;
-  String get currentRoute => _currentRoute;
-
-  Future<void> loadAllPreferences() async {
-    await GetStorage.init();
-    await loadSelectedReadingType();
-    await _loadFontSize();
-    await _loadFontFamily();
-    await _loadSliderValues();
-    notifyListeners();
-  }
-
+  // Return font family name exactly as in pubspec.yaml
   String getFontFamilyByIndex(int index) {
     switch (index) {
       case 0:
@@ -71,10 +27,69 @@ class UiDarkModeController with ChangeNotifier {
       case 3:
         return 'Deco Type';
       default:
-        return 'MADDINA';
+        return 'MADDINA'; // Default font
     }
   }
+// Inside UiDarkModeController
+//=============================//
 
+
+
+
+  String _selectedReadingType = 'Juz Style'; // Default value
+
+// Getter
+  String get selectedReadingType => _selectedReadingType;
+
+// Load from storage
+  Future<void> _loadSelectedReadingType() async {
+    _selectedReadingType = _storage.read('selectedReadingType') ?? 'Juz Style';
+  }
+
+// Save to storage
+  Future<void> saveSelectedReadingType(String type) async {
+    _selectedReadingType = type;
+    await _storage.write('selectedReadingType', type);
+    notifyListeners();
+  }
+
+
+
+//=======================
+  // Font size and slider values
+  double _fontSize = 16.0;
+  String _fontFamily = 'MADDINA'; // Default font family
+  List<double> _sliderValues = [0.5, 0.5, 0.5];
+
+  // Theme management
+  bool _isDarkMode = false;
+  Color _appColor = Colors.white;
+  String _theme = 'starfield';
+  String _currentRoute = '/home';
+
+  UiDarkModeController() {
+    loadAllPreferences();
+  }
+
+  // Getters
+  double get fontSize => _fontSize;
+  String get fontFamily => _fontFamily;
+  List<double> get sliderValues => _sliderValues;
+  bool get isDarkMode => _isDarkMode;
+  Color get appColor => _appColor;
+  String get theme => _theme;
+  String get currentRoute => _currentRoute;
+
+  // Initialize all saved values
+  Future<void> loadAllPreferences() async {
+    await GetStorage.init();
+    await _loadFontSize();
+    await _loadFontFamily();
+    await _loadSliderValues();
+    notifyListeners();
+  }
+
+  // Font family methods
   Future<void> _loadFontFamily() async {
     _fontFamily = _storage.read('fontFamily') ?? 'MADDINA';
   }
@@ -85,6 +100,7 @@ class UiDarkModeController with ChangeNotifier {
     notifyListeners();
   }
 
+  // Font size methods
   Future<void> _loadFontSize() async {
     _fontSize = _storage.read('fontSize') ?? 16.0;
   }
@@ -95,10 +111,13 @@ class UiDarkModeController with ChangeNotifier {
     notifyListeners();
   }
 
+  // Slider methods
   Future<void> _loadSliderValues() async {
     final savedValues = _storage.read('sliderValues');
     if (savedValues != null && savedValues is String) {
-      _sliderValues = savedValues.split(',').map((e) => double.tryParse(e) ?? 0.5).toList();
+      _sliderValues = savedValues.split(',')
+          .map((e) => double.tryParse(e) ?? 0.5)
+          .toList();
     }
   }
 
@@ -120,6 +139,7 @@ class UiDarkModeController with ChangeNotifier {
     }
   }
 
+  // Theme methods
   void setDarkMode(bool value) {
     _isDarkMode = value;
     _storage.write('isDarkMode', value);
