@@ -15,7 +15,6 @@ import 'package:quran_app/helpers/ui_helpers.dart';
 
 
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -195,7 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Text(
                           'Sign Up',
                           style: TextStyle(
-                            color:  Color(0xFF72BBFF),
+                            color: const Color(0xFF72BBFF),
                             fontSize: 14,
                             fontFamily: 'Raleway',
                             fontWeight: FontWeight.w500,

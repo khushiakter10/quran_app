@@ -7,10 +7,11 @@ import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_icons.dart';
 import 'package:quran_app/common_widgets/custom_personalization_button.dart';
 import 'package:quran_app/common_widgets/custom_text_formfield.dart';
-import 'package:quran_app/helpers/all_routes.dart';
-import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
+import '../../../../common_widgets/custom_button.dart';
+import '../../../../helpers/all_routes.dart';
+import '../../../../helpers/navigation_service.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});

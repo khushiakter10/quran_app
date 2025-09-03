@@ -1,11 +1,13 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
-import 'package:quran_app/features/read_quran_surah/read_surah_scroll_style/presentation/read_surah_scroll_style_screen.dart';
+import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
+import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
 
@@ -38,8 +40,8 @@ class ReadQuranSurah extends StatelessWidget {
     'الفاتحة',
     'البَقَرة',
     'آل عِمران',
-    'النِّســاء',
-    'المَـائِدة',
+    'النِّســَاء',
+    'المَِـائِدة',
     'الأنْعـام',
     'الأعراف',
     'الأنْفـال',
@@ -47,62 +49,84 @@ class ReadQuranSurah extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentTheme = UiDarkModeHelper.getCurrentTheme(context);
-    final isStarfield = currentTheme == UiDarkModeHelper.starfieldTheme;
-    final isLight = currentTheme == UiDarkModeHelper.lightTheme;
+    return Consumer<UiDarkModeController>(
+        builder: (context, controller, child) {
+          final currentTheme = UiDarkModeHelper.getCurrentTheme(context);
+          final isStarfield = currentTheme == UiDarkModeHelper.starfieldTheme;
+          final isLight = currentTheme == UiDarkModeHelper.lightTheme;
 
-    return GestureDetector(
-
-      onTap: () {
-        Get.to(ReadSurahScrollStyleScreen());
-      },
-      child:
-
-      ListView.separated(
-        itemCount: dataList.length,
-        shrinkWrap: true,
-        physics:  NeverScrollableScrollPhysics(),
-        separatorBuilder: (_, __) => Padding(
-          padding: EdgeInsets.symmetric(vertical: 12.h),
-          child: Divider(
-            color: isLight ? AppColors.c72BBFF : AppColors.c3F678C,
-            thickness: 1,
-          ),
-        ),
-        itemBuilder: (context, index) {
-          return Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                dataList[index],
-                style: TextFontStyle.textStyle12w500FEFEFERaleway.copyWith(
-                  fontSize: 16.sp,
-                  color: isStarfield ? const Color(0xFFFEFEFE) : (isLight ? Colors.black : Colors.white),
-                ),
+          return ListView.separated(
+            itemCount: dataList.length,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (_, __) => Padding(
+              padding: EdgeInsets.symmetric(vertical: 12.h),
+              child: Divider(
+                color: isLight ? AppColors.c72BBFF : AppColors.c3F678C,
+                thickness: 1,
               ),
-              UIHelper.horizontalSpace(16.w),
-              Expanded(
-                child: Text(
-                  surahAll[index],
-                  style: TextFontStyle.textStyle12w500FEFEFERaleway.copyWith(
-                    fontSize: 16.sp,
-                    color: isStarfield ? const Color(0xFFFEFEFE) : (isLight ? Colors.black : Colors.white),
-                  ),
-                  overflow: TextOverflow.ellipsis,
+            ),
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () async {
+                  await controller.loadSelectedReadingType();
+                  final type = controller.selectedReadingType;
+                  if (type == 'Juz Style') {
+                    Get.toNamed(Routes.juzEnglishTranslationScreen);
+                  } else if (type == 'Scroll Style') {
+                    Get.toNamed(Routes.readSurahScrollStyleScreen);
+                  } else if (type == 'Verse-by-Verse') {
+                    Get.toNamed(Routes.readSurahVerseByVerseScreen);
+                  } else if (type == 'Word-for-Word') {
+                    Get.toNamed(Routes.readSurahWordForWordScreen);
+                  }
+                },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      dataList[index],
+                      style: TextFontStyle.textStyle12w500FEFEFERaleway.copyWith(
+                        fontSize: 16.sp,
+                        color: isStarfield
+                            ? const Color(0xFFFEFEFE)
+                            : (isLight ? Colors.black : Colors.white),
+                      ),
+                    ),
+                    UIHelper.horizontalSpace(16.w),
+                    Expanded(
+                      child: Text(
+                        surahAll[index],
+                        style: TextFontStyle.textStyle12w500FEFEFERaleway.copyWith(
+                          fontSize: 16.sp,
+                          color: isStarfield
+                              ? const Color(0xFFFEFEFE)
+                              : (isLight ? Colors.black : Colors.white),
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    Text(
+                      surah[index],
+                      style: TextFontStyle.textStyle12w500FEFEFERaleway.copyWith(
+                        fontFamily: controller.getFontFamilyByIndex(
+                            controller.selectedLanguageIndex),
+                        fontSize: 16.sp,
+                        color: isStarfield
+                            ? const Color(0xFFFEFEFE)
+                            : (isLight ? Colors.black : Colors.white),
+                      ),
+                      textDirection: TextDirection.rtl,
+                    ),
+                  ],
                 ),
-              ),
-              Text(
-                surah[index],
-                style: TextFontStyle.textStyle12w500FEFEFERaleway.copyWith(
-                  fontSize: 16.sp,
-                  color: isStarfield ? const Color(0xFFFEFEFE) : (isLight ? Colors.black : Colors.white),
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-            ],
+              );
+            },
           );
-        },
-      ),
-    );
+        });
   }
 }
+
+
+
+

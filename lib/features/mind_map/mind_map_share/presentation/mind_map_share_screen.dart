@@ -9,7 +9,6 @@ import 'package:quran_app/helpers/ui_helpers.dart';
 
 
 
-
 class MindMapShareScreen extends StatefulWidget {
   const MindMapShareScreen({super.key});
 

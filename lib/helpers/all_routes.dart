@@ -62,7 +62,6 @@ import 'package:quran_app/features/vocabulary/vocabulary_tajweed/presentation/vo
 import '../features/news/presentation/gibla_screen.dart';
 import '../features/read_quran_juz/juz_english_translation/presentation/juz_english_translation_screen.dart';
 
-
 final class Routes {
   static final Routes _routes = Routes._internal();
 
@@ -704,16 +703,6 @@ final class RouteGenerator {
           return CupertinoPageRoute(
               builder: (context) => NewsScreen());
         }
-
-
-
-
-
-
-
-
-
-
 
 
       case Routes.jusDisplaySettingScreen:

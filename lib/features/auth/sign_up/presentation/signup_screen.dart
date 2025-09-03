@@ -10,6 +10,7 @@ import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
 
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 

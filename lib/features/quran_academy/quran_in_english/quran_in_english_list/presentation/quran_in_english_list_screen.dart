@@ -65,7 +65,7 @@ class _QuranAcademyScreenState extends State<QuranInEnglishListScreen> {
                       borderRadius: BorderRadius.circular(16.r),
                     ),
                     child: Padding(
-                      padding:  EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(12),
                       ///============Card===========
                       child: QuranEnglishListCard(
                       ),

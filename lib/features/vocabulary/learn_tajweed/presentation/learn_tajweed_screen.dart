@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/features/read_quran_surah/read_quran/widget/custom_appbar.dart';
-import 'package:quran_app/features/vocabulary/learn_tajweed/widget/custom_learn_tajweed.dart';
 import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
+
+
+import '../widget/custom_learn_tajweed.dart';
 
 class LearnTajweedScreen extends StatefulWidget {
   const LearnTajweedScreen({super.key});
@@ -103,7 +105,7 @@ class _LearnTajweedScreenState extends State<LearnTajweedScreen> {
                         padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
                         child: ListView.builder(
                           itemCount: number.length,
-                          physics:  AlwaysScrollableScrollPhysics(),
+                          physics: const AlwaysScrollableScrollPhysics(),
 
                           itemBuilder: (BuildContext context, int index) {
                             return Custom(title: title[index], data: number[index], subtitle: subtitle[index],);

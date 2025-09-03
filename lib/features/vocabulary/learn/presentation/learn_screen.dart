@@ -10,10 +10,10 @@ import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/common_widgets/custom_personalization_button.dart';
 import 'package:quran_app/features/vocabulary/learn/widget/learn_custom.dart';
 import 'package:quran_app/helpers/all_routes.dart';
+import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
-import '../../../../helpers/navigation_service.dart';
 
 class LearnScreen extends StatefulWidget {
   const LearnScreen({super.key});

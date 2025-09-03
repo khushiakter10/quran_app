@@ -11,6 +11,7 @@ import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
 
+
 class CreatequranJuzCreateNewList extends StatefulWidget {
 
   const CreatequranJuzCreateNewList({super.key, });

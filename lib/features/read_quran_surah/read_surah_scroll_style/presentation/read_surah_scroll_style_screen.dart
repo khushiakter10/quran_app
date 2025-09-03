@@ -12,9 +12,9 @@ import 'package:quran_app/features/read_quran_surah/read_surah_scroll_style/widg
 import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
-import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
+import '../../../../helpers/ui_dark_mood_controller.dart';
 
 class ReadSurahScrollStyleScreen extends StatefulWidget {
   const ReadSurahScrollStyleScreen({super.key});
@@ -219,12 +219,15 @@ class _ReadSurahScrollStyleScreenState extends State<ReadSurahScrollStyleScreen>
                                                   .titleStyle24w400c000000Persian
                                                   .copyWith(
                                                 fontSize: controller.fontSize + (controller.sliderValues[0] * 14),
+
                                                 color: isStarfield
                                                     ? AppColors.c000000
                                                     : (isLight
                                                         ? const Color(
                                                             0xFF484848)
                                                         : Colors.black),
+                                                  fontFamily: controller.getFontFamilyByIndex(
+                                                      controller.selectedLanguageIndex)
                                               ),
                                             ),
                                           ),

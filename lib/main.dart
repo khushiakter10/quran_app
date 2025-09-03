@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' show MultiProvider, ChangeNotifierProvider;
 import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/loading_screen.dart';
 import 'helpers/all_routes.dart';

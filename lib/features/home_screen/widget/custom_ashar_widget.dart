@@ -5,11 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
-import 'package:quran_app/assets_helper/app_icons.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
+
+import '../../../assets_helper/app_icons.dart' show AppIcons;
 
 
 class CustomAsharWidget extends StatefulWidget {

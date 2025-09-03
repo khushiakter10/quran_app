@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:quran_app/features/button_navigationbar.dart';
-import 'package:quran_app/features/home_screen/presentation/home_screen.dart';
-import 'package:quran_app/features/onboading/presentation/onboading_screen.dart';
 import 'package:quran_app/welcome_screen.dart';
 import 'constants/app_constants.dart';
+import 'features/button_navigationbar.dart';
+import 'features/home_screen/presentation/home_screen.dart';
+import 'features/onboading/presentation/onboading_screen.dart';
 import 'helpers/all_routes.dart';
 import 'helpers/di.dart';
 import 'helpers/helper_methods.dart';

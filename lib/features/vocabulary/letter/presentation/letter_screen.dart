@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/features/read_quran_surah/read_quran/widget/custom_appbar.dart';
 import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
-import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
-import 'package:quran_app/helpers/ui_helpers.dart';
 
+import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
+import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
+import 'package:quran_app/helpers/ui_helpers.dart';
 
 class LetterScreen extends StatefulWidget {
   const LetterScreen({super.key});
@@ -61,7 +63,8 @@ class _LetterScreenState extends State<LetterScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    return Consumer<UiDarkModeController>(
+        builder: (context, controller, child) {
 
     final currentTheme = UiDarkModeHelper.getCurrentTheme(context);
     final isStarfield = currentTheme == UiDarkModeHelper.starfieldTheme;
@@ -223,6 +226,7 @@ class _LetterScreenState extends State<LetterScreen> {
                                                 : (UiDarkModeHelper.isDarkMode(context)
                                                 ? AppColors.cFFFFFF
                                                 :  AppColors.c484848),
+
                                           ),
                                         ),
                                       ],
@@ -243,5 +247,5 @@ class _LetterScreenState extends State<LetterScreen> {
         ),
       ),
     );
-  }
-}
+  });
+}}

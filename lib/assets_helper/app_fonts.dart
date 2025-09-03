@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -198,6 +198,13 @@ class TextFontStyle {
     color: AppColors.c72BBFF,
     fontSize: 12,
     fontFamily: 'Raleway',
+    fontWeight: FontWeight.w400,
+  );
+
+ static final textStyle16w400c72BBFFAmiriQuran = TextStyle(
+    color: AppColors.c72BBFF,
+    fontSize: 16,
+    fontFamily: 'Amiri Quran',
     fontWeight: FontWeight.w400,
   );
 
@@ -502,6 +509,32 @@ static final textStyle14w400c666666Raleway = TextStyle(
     fontWeight: FontWeight.w400,
     height: 1.50,
   );
+
+
+
+
+  static final textStyle16w600c060606Madina = TextStyle(
+    fontSize: 16,
+    fontFamily: 'Madina',
+    fontWeight: FontWeight.w600,
+  );
+
+
+
+
+  //
+  //
+  // static TextStyle textStyle16w600c060606(BuildContext context) {
+  //   final controller = Provider.of<UiDarkModeController>(context);
+  //
+  //   return TextStyle(
+  //     fontSize: controller.fontSize,           // Dynamic size
+  //     fontFamily: SomeOtherController.fontFamily,   // Dynamic font family (Madina, MeQuran, etc.)
+  //     fontWeight: FontWeight.w600,
+  //     color: const Color(0xFF060606),
+  //   );
+  // }
+
 
 
   static TextStyle  titleStyle14w400cB1AFAARaleway (BuildContext context) {

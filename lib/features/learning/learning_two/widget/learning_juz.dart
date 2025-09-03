@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+
+import 'package:provider/provider.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/features/read_quran_juz/juz_english_translation/presentation/juz_english_translation_screen.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
+import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
-
 
 class LearningJuz extends StatelessWidget {
   const LearningJuz({Key? key}) : super(key: key);
@@ -31,6 +33,8 @@ class LearningJuz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Consumer<UiDarkModeController>(
+        builder: (context, controller, child) {
     final currentTheme = UiDarkModeHelper.getCurrentTheme(context);
     final isStarfield = currentTheme == UiDarkModeHelper.starfieldTheme;
     final isLight = currentTheme == UiDarkModeHelper.lightTheme;
@@ -86,6 +90,8 @@ class LearningJuz extends StatelessWidget {
               Text(
                 juz[index],
                 style: TextFontStyle.textStyle12w500FEFEFERaleway.copyWith(
+                    fontFamily: controller.getFontFamilyByIndex(
+                        controller.selectedLanguageIndex),
                   fontSize: 16.sp,
                color: isStarfield
                ? AppColors.cF9F6F0
@@ -100,5 +106,5 @@ class LearningJuz extends StatelessWidget {
         },
       ),
     );
-  }
-}
+  });
+}}

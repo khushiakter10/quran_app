@@ -8,6 +8,7 @@ import 'package:quran_app/common_widgets/custom_personalization_button.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
+
 class QuranAyatNumber extends StatefulWidget {
   const QuranAyatNumber({super.key});
 

@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
-import 'package:quran_app/features/read_quran_juz/juz_english_translation/widget/quran_juz_create_new_list.dart';
-import 'package:quran_app/features/read_quran_surah/read_surah_word_for_word/widget/custom_button_cancel.dart';
+import 'package:quran_app/features/read_quran_juz/juz_english_translation/widget/quran_juz_create_new_list.dart' show CreatequranJuzCreateNewList;
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
+
+import '../../../read_quran_surah/read_surah_word_for_word/widget/custom_button_cancel.dart';
+
 
 class BookmarkQuranJuz extends StatefulWidget {
   final String title;

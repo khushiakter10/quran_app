@@ -1,8 +1,10 @@
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
+import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/common_widgets/custom_personalization_button.dart';
 import 'package:quran_app/features/personalization_flow/sign_up_preferred_language/widget/custom_language_selection_title.dart';
@@ -13,6 +15,7 @@ import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
+
 class CalligraphyStyleScreen extends StatefulWidget {
   const CalligraphyStyleScreen({super.key});
 
@@ -21,14 +24,10 @@ class CalligraphyStyleScreen extends StatefulWidget {
 }
 
 class _CalligraphyStyleScreenState extends State<CalligraphyStyleScreen> {
-  int selectedLanguageIndex = -1;
 
-  final List<String> title = [
-    'Madina',
-    'Amiri Quran',
-    'Kitab Regular (Tajweed)',
-    'Word by Word Quran',
-  ];
+
+
+
 
   @override
   void initState() {
@@ -41,7 +40,6 @@ class _CalligraphyStyleScreenState extends State<CalligraphyStyleScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Listen to theme changes using Provider
     return Consumer<UiDarkModeController>(
       builder: (context, controller, child) {
         final currentTheme = UiDarkModeHelper.getCurrentTheme(context);
@@ -55,9 +53,9 @@ class _CalligraphyStyleScreenState extends State<CalligraphyStyleScreen> {
             decoration: BoxDecoration(
               image: isStarfield
                   ? DecorationImage(
-                      image: AssetImage(AppImages.personalizationbacroundImage),
-                      fit: BoxFit.cover,
-                    )
+                image: AssetImage(AppImages.personalizationbacroundImage),
+                fit: BoxFit.cover,
+              )
                   : null,
               gradient: isStarfield
                   ? null
@@ -67,7 +65,9 @@ class _CalligraphyStyleScreenState extends State<CalligraphyStyleScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 15.h),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Step bar
                     CustomStepBar(
                       isDarkText: isLight,
                       currentStep: 1,
@@ -75,55 +75,63 @@ class _CalligraphyStyleScreenState extends State<CalligraphyStyleScreen> {
                         NavigationService.goBack;
                       },
                       onSkip: () {
-                        NavigationService.navigateTo(Routes.selectColorThemBackgroundScreen);
+                        NavigationService.navigateTo(
+                            Routes.selectColorThemBackgroundScreen);
                       },
                       onStepTap: (index) => goToStep(index),
                     ),
+                    UIHelper.verticalSpace(24.h),
+
                     Text(
                       'Choose Quran Calligraphy Style',
-                      style: TextStyle(
-                        color: isStarfield
-                            ? const Color(0xFFF9F6F0)
-                            : (UiDarkModeHelper.isDarkMode(context)
-                                ? Colors.white
-                                : Colors.black),
+                      style: TextFontStyle.textStyle18w500cF9F6F0Raleway.copyWith(
                         fontSize: 24.sp,
-                        fontFamily: 'Raleway',
                         fontWeight: FontWeight.w600,
-                        height: 1.32,
+                        color: isStarfield
+                            ? AppColors.cF9F6F0
+                            : (UiDarkModeHelper.isDarkMode(context)
+                            ? AppColors.cF9F6F0
+                            : AppColors.c000000),
                       ),
                     ),
                     UIHelper.verticalSpace(24.h),
-                    ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: title.length,
-                      separatorBuilder: (context, index) =>
-                          UIHelper.verticalSpace(8.h),
-                      itemBuilder: (context, index) {
-                        bool isSelected = selectedLanguageIndex == index;
-                        return CustomLanguageSelectionTitle(
-                          title: title[index],
-                          isSelected: isSelected,
-                          onTap: () {
-                            setState(() {
-                              selectedLanguageIndex = index;
-                            });
-                          },
-                        );
-                      },
+
+                    // List of fonts - wrap with Expanded to avoid overflow
+                    Expanded(
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.title.length,
+                        separatorBuilder: (context, index) =>
+                            UIHelper.verticalSpace(8.h),
+                        itemBuilder: (context, index) {
+                          bool isSelected = controller.selectedLanguageIndex == index;
+                          return CustomLanguageSelectionTitle(
+                            title: controller.title[index],
+                            isSelected: isSelected,
+                            onTap: () {
+                              setState(() {
+                                controller.selectedLanguageIndex = index;
+                              });
+                            },
+                          );
+                        },
+                      ),
                     ),
+
                     UIHelper.verticalSpace(37.h),
+
+                    // Dotted border with preview text using selected font family
                     DottedBorder(
                       color: AppColors.c72BBFF,
                       strokeWidth: 1,
                       borderType: BorderType.RRect,
-                      radius: const Radius.circular(8),
+                      radius: Radius.circular(8.r),
                       dashPattern: [6, 3],
                       child: Container(
                         width: 327,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 24.h, vertical: 32.w),
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 24.h, vertical: 32.w),
                         decoration: BoxDecoration(
                           gradient: isStarfield
                               ? null
@@ -133,37 +141,34 @@ class _CalligraphyStyleScreenState extends State<CalligraphyStyleScreen> {
                         ),
                         child: Center(
                           child: Text(
-                            ' بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+                            'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
                             textAlign: TextAlign.center,
+                            style: TextFontStyle.textStyle16w600c060606Madina.copyWith(
+                              fontSize: 25,
 
-                            style: TextStyle(
+                              fontFamily: controller.getFontFamilyByIndex(
+                                  controller.selectedLanguageIndex),
                               color: isStarfield
-                                  ? const Color(0xFF72BBFF)
+                                  ? AppColors.c72BBFF
                                   : (UiDarkModeHelper.isDarkMode(context)
-                                      ? Colors.blue
-                                      : Colors.black),
-                              fontSize: 16.sp,
-                              fontFamily: 'Amiri Quran',
-                              fontWeight: FontWeight.w400,
-                              height: 1.32,
+                                  ? AppColors.c72BBFF
+                                  : AppColors.c000000),
                             ),
-
-                            // style: TextStyle(
-                            //   color: const Color(0xFF72BBFF),
-                            //   fontSize: 16,
-                            //   fontFamily: 'Amiri Quran',
-                            //   fontWeight: FontWeight.w400,
-                            // ),
                           ),
                         ),
                       ),
                     ),
-                     Spacer(),
+
+                    UIHelper.verticalSpace(20.h),
+
                     CustomPersonalizationButton(
                       text: 'Next',
-                      onPressed: () {
-                        NavigationService.navigateTo(
-                            Routes.preferredFontSizeScreen);
+                      onPressed: () async{
+                        await controller.saveFontFamily(controller.getFontFamilyByIndex(
+                            controller.selectedLanguageIndex));
+                        await controller.saveSliderValues();
+                        print(">>>>>>>>>>>>>>>>> font name is ${controller.fontFamily.toString()}");
+                        NavigationService.navigateTo(Routes.preferredFontSizeScreen);
                       },
                     ),
                   ],
@@ -177,6 +182,5 @@ class _CalligraphyStyleScreenState extends State<CalligraphyStyleScreen> {
   }
 
   void goToStep(int index) {
-    // Navigation logic
   }
 }

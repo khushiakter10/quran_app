@@ -9,6 +9,7 @@ import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
+
 class QuranQari extends StatefulWidget {
   const QuranQari({super.key});
 

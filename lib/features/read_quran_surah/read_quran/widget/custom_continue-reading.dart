@@ -35,7 +35,7 @@ class CustomContinueReading extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.r),
             side: BorderSide(
               color: isStarfield
-                  ?  Color(0xFF3F678C)
+                  ? const Color(0xFF3F678C)
                   : (isLight ? AppColors.cF9F6F0 : const Color(0xFF304F6B)),
               width: 0.50,
             ),

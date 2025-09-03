@@ -346,6 +346,8 @@ class _JuzEnglishTranslationScreenState extends State<JuzEnglishTranslationScree
                                                           (controller.sliderValues[
                                                           0] *
                                                               14),
+                                                        fontFamily: controller.getFontFamilyByIndex(
+                                                            controller.selectedLanguageIndex)
                                                     ),
                                                   ),
                                                 ),

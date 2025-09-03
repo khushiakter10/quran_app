@@ -20,16 +20,16 @@
 // }
 //
 // class _LikeToQuranScreenState extends State<LikeToQuranScreen> {
-//   int selectedLanguageIndex = 0;
+//   int selectedLanguageIndex = -1;
 //
-//   final List<String> readingTitles = [
+//   final List<String> title = [
 //     'Juz Style',
 //     'Scroll Style',
 //     'Verse-by-Verse',
 //     'Word-for-Word',
 //   ];
 //
-//   final List<String> readingSubtitles = [
+//   final List<String> subtitle = [
 //     '(Page-flipping like a book)',
 //     '(Scroll down continuously)',
 //     '(One verse per screen)',
@@ -47,6 +47,7 @@
 //
 //   @override
 //   Widget build(BuildContext context) {
+//     // Check for light mode, dark mode, and starfield mode
 //     bool isLightMode = UiDarkModeHelper.isLightMode(context);
 //     bool isDarkMode = UiDarkModeHelper.isDarkMode(context);
 //
@@ -81,34 +82,39 @@
 //                       isDarkText: isLight,
 //                       currentStep: 5,
 //                       onTap: () {
-//                         NavigationService.goBack();
+//                         NavigationService.goBack;
 //                       },
 //                       onSkip: () {
-//                         NavigationService.navigateTo(
-//                             Routes.selectColorThemBackgroundScreen);
+//                         NavigationService.navigateTo(Routes.selectColorThemBackgroundScreen);
 //                       },
 //                       onStepTap: (index) => goToStep(index),
 //                     ),
 //                     UIHelper.verticalSpace(24.h),
+//
+//
 //                     Text(
 //                       'How would you like to read the Quran?',
 //                       style: TextFontStyle.textStyle18w500cF9F6F0Raleway.copyWith(
 //                         fontSize: 24.sp,
 //                         fontWeight: FontWeight.w600,
 //                         color: isStarfield
-//                             ? AppColors.cF9F6F0
-//                             : (isDarkMode
+//                             ?  AppColors.cF9F6F0
+//                             : (UiDarkModeHelper.isDarkMode(context)
 //                             ? AppColors.cF9F6F0
 //                             : AppColors.c000000),
+//
 //                       ),
 //                     ),
+//
+//
 //                     UIHelper.verticalSpace(32.h),
 //                     Expanded(
 //                       child: ListView.builder(
-//                         itemCount: readingTitles.length,
+//                         shrinkWrap: true,
+//                         physics: const AlwaysScrollableScrollPhysics(),
+//                         itemCount: title.length,
 //                         itemBuilder: (BuildContext context, int index) {
-//                           final bool isSelected =
-//                               selectedLanguageIndex == index;
+//                           final bool isSelected = selectedLanguageIndex == index;
 //
 //                           Color backgroundColor;
 //                           Color borderColor;
@@ -123,8 +129,7 @@
 //                             borderColor = isSelected
 //                                 ? const Color(0xFF72BBFF)
 //                                 : Colors.grey.withOpacity(0.2);
-//                             textColor =
-//                             isSelected ? Colors.blue : Colors.black;
+//                             textColor = isSelected ? Colors.blue : Colors.black;
 //                             subtitleColor =
 //                             isSelected ? Colors.blue : Colors.black54;
 //                             boxShadow = isSelected
@@ -137,6 +142,7 @@
 //                             ]
 //                                 : [];
 //                           } else if (isDarkMode) {
+//                             // Dark mode color settings
 //                             backgroundColor = isSelected
 //                                 ? Colors.black.withOpacity(0.1)
 //                                 : const Color(0x66061420);
@@ -157,6 +163,7 @@
 //                               ),
 //                             ];
 //                           } else {
+//                             // Starfield mode color settings
 //                             backgroundColor = isSelected
 //                                 ? Colors.black.withOpacity(0.1)
 //                                 : const Color(0x66061420);
@@ -183,8 +190,6 @@
 //                               setState(() {
 //                                 selectedLanguageIndex = index;
 //                               });
-//                               controller.saveSelectedReadingType(
-//                                   readingTitles[index]);
 //                             },
 //                             child: Container(
 //                               width: double.infinity,
@@ -206,18 +211,19 @@
 //                                 crossAxisAlignment: CrossAxisAlignment.start,
 //                                 children: [
 //                                   Text(
-//                                     readingTitles[index],
-//                                     style: TextFontStyle
-//                                         .textStyle18w500cF9F6F0Raleway
-//                                         .copyWith(color: textColor),
+//                                     title[index],
+//                                     style: TextFontStyle.textStyle18w500cF9F6F0Raleway.copyWith(
+//                                       color: textColor,
+//                                     ),
+//
 //                                   ),
 //                                   Text(
-//                                     readingSubtitles[index],
-//                                     style: TextFontStyle
-//                                         .textStyle18w500cF9F6F0Raleway
-//                                         .copyWith(
+//                                     subtitle[index],
+//                                     style: TextFontStyle.textStyle18w500cF9F6F0Raleway.copyWith(
 //                                         color: subtitleColor,
-//                                         fontSize: 16.sp),
+//                                         fontSize: 16.sp
+//                                     ),
+//
 //                                   ),
 //                                 ],
 //                               ),
@@ -230,11 +236,8 @@
 //                     CustomPersonalizationButton(
 //                       text: 'Next',
 //                       onPressed: () {
-//                         final readingType =
-//                         readingTitles[selectedLanguageIndex];
-//                         controller.saveSelectedReadingType(readingType);
-//                         NavigationService
-//                             .navigateTo(Routes.selectColorThemBackgroundScreen);
+//                         print(">>>>>>>>>>>>>>>>>>>>>>>> here is the title ${selectedLanguageIndex}");
+//                         NavigationService.navigateTo(Routes.selectColorThemBackgroundScreen);
 //                       },
 //                     ),
 //                   ],
@@ -247,5 +250,6 @@
 //     );
 //   }
 //
-//   void goToStep(int index) {}
+//   void goToStep(int index) {
+//   }
 // }

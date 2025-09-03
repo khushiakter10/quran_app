@@ -11,6 +11,7 @@ import 'package:quran_app/helpers/ui_helpers.dart';
 
 
 
+
 class QuranAcademyScreen extends StatefulWidget {
   const QuranAcademyScreen({super.key});
 

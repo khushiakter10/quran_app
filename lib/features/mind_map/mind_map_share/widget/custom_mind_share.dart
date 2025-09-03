@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:provider/provider.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_icons.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
+import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
-
 
 class CustoMindShare extends StatelessWidget {
   final bool showIcon;
@@ -31,6 +33,8 @@ class CustoMindShare extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Consumer<UiDarkModeController>(
+        builder: (context, controller, child) {
     final currentTheme = UiDarkModeHelper.getCurrentTheme(context);
     final isStarfield = currentTheme == UiDarkModeHelper.starfieldTheme;
     final isLight = currentTheme == UiDarkModeHelper.lightTheme;
@@ -97,8 +101,10 @@ class CustoMindShare extends StatelessWidget {
                         TextFontStyle.textStyle12w500FEFEFERaleway.copyWith(
                           fontSize: 16.sp,
                           color: isStarfield
-                              ? const Color(0xFFFEFEFE).withOpacity(0.7)
+                              ?  Color(0xFFFEFEFE).withOpacity(0.7)
                               : (isLight ? Colors.black54 : Colors.white70),
+                            fontFamily: controller.getFontFamilyByIndex(
+                                controller.selectedLanguageIndex)
                         ),
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -114,5 +120,5 @@ class CustoMindShare extends StatelessWidget {
         ],
       ),
     );
-  }
-}
+  });
+  }}

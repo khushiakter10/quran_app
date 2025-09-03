@@ -9,6 +9,7 @@ import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_icons.dart';
 
 
+
 class CustomStepBar extends StatelessWidget {
   final VoidCallback onTap;
   final int currentStep;

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
 
+
 class CustomPersonalizationButton extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final String text;

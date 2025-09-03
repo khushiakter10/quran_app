@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
+import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
 
@@ -46,6 +48,8 @@ class CustoMmindMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Consumer<UiDarkModeController>(
+        builder: (context, controller, child) {
 
     final currentTheme = UiDarkModeHelper.getCurrentTheme(context);
     final isStarfield = currentTheme == UiDarkModeHelper.starfieldTheme;
@@ -102,10 +106,12 @@ class CustoMmindMap extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Spacer(),
+                   Spacer(),
                   Text(
                     surah[index],
                     style: TextFontStyle.titleStyle16w400cF9F6F0Persian.copyWith(
+                    fontFamily: controller.getFontFamilyByIndex(
+                      controller.selectedLanguageIndex),
                       color: isStarfield
                           ? const Color(0xFFF9F6F0)
                           : (UiDarkModeHelper.isDarkMode(context)
@@ -129,5 +135,5 @@ class CustoMmindMap extends StatelessWidget {
         },
       ),
     );
-  }
-}
+  });
+}}

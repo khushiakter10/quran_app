@@ -1,12 +1,14 @@
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
+import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/common_widgets/custom_personalization_button.dart';
 import 'package:quran_app/features/personalization_flow/sign_up_preferred_language/widget/custom_language_selection_title.dart';
-import 'package:quran_app/features/read_quran_surah/read_quran/widget/custom_appbar.dart';
+import 'package:quran_app/features/personalization_flow/widget_step/custom_stepbar.dart';
 import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
@@ -21,14 +23,10 @@ class ChangeFontScreen extends StatefulWidget {
 }
 
 class _ChangeFontScreenState extends State<ChangeFontScreen> {
-  int selectedLanguageIndex = -1;
 
-  final List<String> title = [
-    'Madina',
-    'Amiri Quran',
-    'Kitab Regular (Tajweed)',
-    'Word by Word Quran',
-  ];
+
+
+
 
   @override
   void initState() {
@@ -41,7 +39,6 @@ class _ChangeFontScreenState extends State<ChangeFontScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Listen to theme changes using Provider
     return Consumer<UiDarkModeController>(
       builder: (context, controller, child) {
         final currentTheme = UiDarkModeHelper.getCurrentTheme(context);
@@ -67,48 +64,73 @@ class _ChangeFontScreenState extends State<ChangeFontScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 15.h),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
-
-                    CustomAppbarWidget(
-                      showIcon: false,
-                      text: 'Change Font',
+                    // Step bar
+                    CustomStepBar(
+                      isDarkText: isLight,
+                      currentStep: 1,
                       onTap: () {
-                        NavigationService.goBack();
+                        NavigationService.goBack;
                       },
+                      onSkip: () {
+                        NavigationService.navigateTo(
+                            Routes.selectColorThemBackgroundScreen);
+                      },
+                      onStepTap: (index) => goToStep(index),
+                    ),
+                    UIHelper.verticalSpace(24.h),
+
+                    Text(
+                      'Choose Quran Calligraphy Style',
+                      style: TextFontStyle.textStyle18w500cF9F6F0Raleway.copyWith(
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.w600,
+                        color: isStarfield
+                            ? AppColors.cF9F6F0
+                            : (UiDarkModeHelper.isDarkMode(context)
+                            ? AppColors.cF9F6F0
+                            : AppColors.c000000),
+                      ),
+                    ),
+                    UIHelper.verticalSpace(24.h),
+
+                    // List of fonts - wrap with Expanded to avoid overflow
+                    Expanded(
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.title.length,
+                        separatorBuilder: (context, index) =>
+                            UIHelper.verticalSpace(8.h),
+                        itemBuilder: (context, index) {
+                          bool isSelected = controller.selectedLanguageIndex == index;
+                          return CustomLanguageSelectionTitle(
+                            title: controller.title[index],
+                            isSelected: isSelected,
+                            onTap: () {
+                              setState(() {
+                                controller.selectedLanguageIndex = index;
+                              });
+                            },
+                          );
+                        },
+                      ),
                     ),
 
-                    UIHelper.verticalSpace(41.h),
-                    ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: title.length,
-                      separatorBuilder: (context, index) =>
-                          UIHelper.verticalSpace(8.h),
-                      itemBuilder: (context, index) {
-                        bool isSelected = selectedLanguageIndex == index;
-                        return CustomLanguageSelectionTitle(
-                          title: title[index],
-                          isSelected: isSelected,
-                          onTap: () {
-                            setState(() {
-                              selectedLanguageIndex = index;
-                            });
-                          },
-                        );
-                      },
-                    ),
                     UIHelper.verticalSpace(37.h),
+
+                    // Dotted border with preview text using selected font family
                     DottedBorder(
                       color: AppColors.c72BBFF,
                       strokeWidth: 1,
                       borderType: BorderType.RRect,
-                      radius: const Radius.circular(8),
+                      radius: Radius.circular(8.r),
                       dashPattern: [6, 3],
                       child: Container(
                         width: 327,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 24.h, vertical: 32.w),
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 24.h, vertical: 32.w),
                         decoration: BoxDecoration(
                           gradient: isStarfield
                               ? null
@@ -118,31 +140,34 @@ class _ChangeFontScreenState extends State<ChangeFontScreen> {
                         ),
                         child: Center(
                           child: Text(
-                            ' بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+                            'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
                             textAlign: TextAlign.center,
+                            style: TextFontStyle.textStyle16w600c060606Madina.copyWith(
+                              fontSize: 25,
 
-                            style: TextStyle(
+                              fontFamily: controller.getFontFamilyByIndex(
+                                  controller.selectedLanguageIndex),
                               color: isStarfield
-                                  ? const Color(0xFF72BBFF)
+                                  ? AppColors.c72BBFF
                                   : (UiDarkModeHelper.isDarkMode(context)
-                                  ? Colors.blue
-                                  : Colors.black),
-                              fontSize: 16.sp,
-                              fontFamily: 'Amiri Quran',
-                              fontWeight: FontWeight.w400,
-                              height: 1.32,
+                                  ? AppColors.c72BBFF
+                                  : AppColors.c000000),
                             ),
-
                           ),
                         ),
                       ),
                     ),
-                     Spacer(),
+
+                    UIHelper.verticalSpace(20.h),
+
                     CustomPersonalizationButton(
-                      text: 'Save',
-                      onPressed: () {
-                         NavigationService.navigateTo(
-                            Routes.settingsScreen);
+                      text: 'Next',
+                      onPressed: () async{
+                        await controller.saveFontFamily(controller.getFontFamilyByIndex(
+                            controller.selectedLanguageIndex));
+                        await controller.saveSliderValues();
+                        print(">>>>>>>>>>>>>>>>> font name is ${controller.fontFamily.toString()}");
+                        NavigationService.navigateTo(Routes.preferredFontSizeScreen);
                       },
                     ),
                   ],
@@ -156,6 +181,5 @@ class _ChangeFontScreenState extends State<ChangeFontScreen> {
   }
 
   void goToStep(int index) {
-    // Navigation logic
   }
 }

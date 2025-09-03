@@ -101,6 +101,8 @@ class _TafsirScreenState extends State<TafsirScreen> {
                           'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
                           textAlign: TextAlign.right,
                           style: TextFontStyle.titleStyle14w400cF9F6F0Raleway.copyWith(
+                            fontFamily: controller.getFontFamilyByIndex(
+                                controller.selectedLanguageIndex),
                             color: isStarfield
                                 ? AppColors.cF9F6F0
                                 : AppColors.c000000,

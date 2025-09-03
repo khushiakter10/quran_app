@@ -9,7 +9,6 @@ import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
-
 class CustomQari extends StatefulWidget {
   const CustomQari({super.key});
 
@@ -133,7 +132,7 @@ class _CustomQariState extends State<CustomQari> {
                                   height: 1.64,
                                 ),
                               ),
-                               Spacer(),
+                              const Spacer(),
                               SvgPicture.asset(AppIcons.playCircle, height: 24.h, color: isLight ? Colors.black : null),
                             ],
                           ),
@@ -160,7 +159,7 @@ class _CustomQariState extends State<CustomQari> {
               color: isLight ? Colors.black : Colors.white,
             ),
           ),
-           Spacer(),
+          const Spacer(),
           Text(
             selectedIndex != -1
                 ? reciterList[selectedIndex]

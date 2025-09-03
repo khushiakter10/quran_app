@@ -1,5 +1,22 @@
+// import 'package:flutter/material.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:get/get.dart';
+// import 'package:omermjamal/assets_helper/app_colors.dart';
+// import 'package:omermjamal/assets_helper/app_fonts.dart';
+// import 'package:omermjamal/features/read_quran_juz/juz_english_translation/presentation/juz_english_translation_screen.dart';
+// import 'package:omermjamal/features/read_quran_surah/read_surah_scroll_style/presentation/read_surah_scroll_style_screen.dart';
+// import 'package:omermjamal/features/read_quran_surah/read_surah_verse_by_verse/presentation/read_surah-verse_by_verse_screen.dart';
+// import 'package:omermjamal/features/read_quran_surah/read_surah_word_for_word/presentation/read_surah_word_for_word_screen.dart';
+// import 'package:omermjamal/helpers/all_routes.dart';
+// import 'package:omermjamal/helpers/navigation_service.dart';
+// import 'package:omermjamal/helpers/ui_dark_mode_helper.dart';
+// import 'package:omermjamal/helpers/ui_dark_mood_controller.dart';
+// import 'package:omermjamal/helpers/ui_helpers.dart';
+// import 'package:provider/provider.dart';
+//
 // class CustomDailyGoal extends StatelessWidget {
 //   final String title;
+//   final selectedType = controller.selectedReadingType;
 //
 //   CustomDailyGoal({
 //     super.key,
@@ -116,6 +133,8 @@
 //                   ),
 //                 ),
 //                 UIHelper.verticalSpace(16.h),
+//
+//
 //                 Container(
 //                   padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
 //                   decoration: ShapeDecoration(
@@ -126,37 +145,70 @@
 //                       borderRadius: BorderRadius.circular(40),
 //                     ),
 //                   ),
-//                   child: GestureDetector(
-//                     onTap: () {
-//                       final selectedType = controller.selectedReadingType;
-//                       print(">>>> Selected Reading Type: $selectedType");
+//                   child: Row(
+//                     mainAxisSize: MainAxisSize.min,
+//                     mainAxisAlignment: MainAxisAlignment.center,
+//                     crossAxisAlignment: CrossAxisAlignment.center,
+//                     children: [
+//                       GestureDetector(
+//                         onTap: () {
 //
-//                       switch (selectedType) {
-//                         case 'Juz Style':
-//                           NavigationService.navigateTo(Routes.juzEnglishTranslationScreen);
-//                           break;
-//                         case 'Scroll Style':
-//                           NavigationService.navigateTo(Routes.readSurahScrollStyleScreen);
-//                           break;
-//                         case 'Verse-by-Verse':
+//                           onPressed: () {
+//
+//                             print(">>>> Selected Reading Type: $selectedType");
+//
+//                             switch (selectedType) {
+//                               case 'Verse-by-Verse':
+//                                 NavigationService.navigateTo(Routes.readSurahVerseByVerseScreen);
+//                                 break;
+//                               case 'Word-for-Word':
+//                                 NavigationService.navigateTo(Routes.readSurahWordForWordScreen);
+//                                 break;
+//                               case 'Scroll Style':
+//                                 NavigationService.navigateTo(Routes.readSurahScrollStyleScreen);
+//                                 break;
+//                               case 'Juz Style':
+//                                 NavigationService.navigateTo(Routes.juzEnglishTranslationScreen);
+//                                 break;
+//                               default:
+//                                 ScaffoldMessenger.of(context).showSnackBar(
+//                                   const SnackBar(
+//                                     content: Text('Invalid selection'),
+//                                     behavior: SnackBarBehavior.floating,
+//                                   ),
+//                                 );
+//                             }
+//                           },
+//
+//
+//
+//                           // switch (selectedType) {
+//                           //   case 'Verse by Verse':
+//                           //     Get.to(() => ReadSurahVerseByVerseScreen());
+//                           //     break;
+//                           //   case 'Word by Word':
+//                           //     Get.to(() => ReadSurahWordForWordScreen());
+//                           //     break;
+//                           //   case 'Scroll Style':
+//                           //     Get.to(() => ReadSurahScrollStyleScreen());
+//                           //
+//                           //     break;  case 'JuzEnglishTranslation':
+//                           //     Get.to(() => JuzEnglishTranslationScreen());
+//                           //     break;
+//                           //   default:
+//                           //     ScaffoldMessenger.of(context).showSnackBar(
+//                           //       const SnackBar(
+//                           //         content: Text('Invalid selection'),
+//                           //         behavior: SnackBarBehavior.floating,
+//                           //       ),
+//                           //     );
+//                           // }
+//
+//
+//
 //                           NavigationService.navigateTo(Routes.readSurahVerseByVerseScreen);
-//                           break;
-//                         case 'Word-for-Word':
-//                           NavigationService.navigateTo(Routes.readSurahWordForWordScreen);
-//                           break;
-//                         default:
-//                           ScaffoldMessenger.of(context).showSnackBar(
-//                             const SnackBar(
-//                               content: Text('Invalid selection'),
-//                               behavior: SnackBarBehavior.floating,
-//                             ),
-//                           );
-//                       }
-//                     },
-//                     child: Row(
-//                       mainAxisSize: MainAxisSize.min,
-//                       children: [
-//                         Text(
+//                           },
+//                         child: Text(
 //                           'Continue Reading',
 //                           textAlign: TextAlign.center,
 //                           style: TextFontStyle.textStyle14w500c000000Raleway.copyWith(
@@ -165,8 +217,8 @@
 //                                 : (isLight ? Colors.white : Colors.black),
 //                           ),
 //                         ),
-//                       ],
-//                     ),
+//                       ),
+//                     ],
 //                   ),
 //                 ),
 //               ],

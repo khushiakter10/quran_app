@@ -5,6 +5,7 @@ import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
+
 class CustomMindMaps extends StatelessWidget {
   final String title;
   final Widget icon;

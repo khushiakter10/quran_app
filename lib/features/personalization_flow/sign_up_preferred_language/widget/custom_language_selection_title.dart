@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
-import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
-
+import '../../../../../../helpers/ui_dark_mode_helper.dart';
 
 class CustomLanguageSelectionTitle extends StatelessWidget {
   final String title;

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:quran_app/assets_helper/app_colors.dart';
+import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/common_widgets/custom_personalization_button.dart';
 import 'package:quran_app/features/personalization_flow/sign_up_preferred_language/widget/custom_thim_selection_widget.dart';
@@ -95,20 +97,23 @@ class _SelectColorThemBackgroundScreenState
 
 
                 UIHelper.verticalSpace(24.h),
+
+
                 Text(
                   'Select the color theme and background',
-                  style: TextStyle(
-
-                    color: isStarfield
-                        ? const Color(0xFFF9F6F0)
-                        : (UiDarkModeHelper.isDarkMode(context) ? Colors.white : Colors.black),
-
+                  style: TextFontStyle.textStyle18w500cF9F6F0Raleway.copyWith(
                     fontSize: 24.sp,
-                    fontFamily: 'Raleway',
                     fontWeight: FontWeight.w600,
-                    height: 1.32,
+                    color: isStarfield
+                        ?  AppColors.cF9F6F0
+                        : (UiDarkModeHelper.isDarkMode(context)
+                        ? AppColors.cF9F6F0
+                        : AppColors.c000000),
+
                   ),
                 ),
+
+
                 UIHelper.verticalSpace(24.h),
                 ListView.separated(
                   shrinkWrap: true,

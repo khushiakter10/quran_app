@@ -5,7 +5,6 @@ import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_icons.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 
-
 class LearnCustom extends StatelessWidget {
   final VoidCallback onTap;
   final int currentStep;

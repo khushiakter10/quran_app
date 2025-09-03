@@ -82,6 +82,7 @@ class CustomSurahAndAyat extends StatelessWidget {
                     },
                   ),
                 ),
+
               ),
             ],
           ),

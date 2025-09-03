@@ -16,7 +16,7 @@ import 'package:quran_app/features/read_quran_surah/read_surah_word_for_word/pre
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
-
+import '../../../read_quran_juz/juz_english_translation/presentation/juz_english_translation_screen.dart';
 
 
 
@@ -213,7 +213,9 @@ class _ReadSurahSettingScreenState extends State<ReadSurahSettingScreen> {
                     fontSize: 14.sp,
                   ),
 
-                  suffixIcon: PopupMenuButton<String>(
+                  suffixIcon:
+
+                  PopupMenuButton<String>(
                     color: AppColors.cFFFFFF,
                     padding: EdgeInsets.zero,
                     icon: SvgPicture.asset(AppIcons.dropdwonIcon, height: 16.h),
@@ -366,7 +368,7 @@ class _ReadSurahSettingScreenState extends State<ReadSurahSettingScreen> {
                       ),
                       onSelected: (value) {
 
-                        if (['Word by Word', 'Verse by Verse', 'Scroll Style'].contains(value)) {
+                        if (['Word by Word', 'Verse by Verse', 'Scroll Style','jus style'].contains(value)) {
                           setState(() {
                             readingTypeController.text = value;
                           });
@@ -377,6 +379,7 @@ class _ReadSurahSettingScreenState extends State<ReadSurahSettingScreen> {
                           'Word by Word',
                           'Verse by Verse',
                           'Scroll Style',
+                          "jus style"
                         ].map((String choice) {
                           return PopupMenuItem<String>(
                             value: choice,
@@ -544,6 +547,9 @@ class _ReadSurahSettingScreenState extends State<ReadSurahSettingScreen> {
                           break;
                         case 'Scroll Style':
                           Get.to(() => ReadSurahScrollStyleScreen());
+                          break;
+                        case 'jus style':
+                          Get.to(() => JuzEnglishTranslationScreen());
                           break;
                         default:
                           ScaffoldMessenger.of(context).showSnackBar(

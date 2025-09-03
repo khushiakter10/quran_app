@@ -7,11 +7,12 @@ import 'package:quran_app/assets_helper/app_icons.dart';
 import 'package:quran_app/common_widgets/custom_text_formfield.dart';
 import 'package:quran_app/features/read_quran_surah/read_quran/widget/custom_continue-reading.dart';
 import 'package:quran_app/features/read_quran_surah/read_quran/widget/read_quran_juz.dart';
-import 'package:quran_app/features/read_quran_surah/read_quran/widget/read_quran_surah.dart';
 import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
+
+import '../widget/learning_surah.dart';
 
 
 class LearningTwoScreen extends StatefulWidget {

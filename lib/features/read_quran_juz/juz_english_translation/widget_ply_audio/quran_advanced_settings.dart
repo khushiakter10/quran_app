@@ -11,6 +11,7 @@ import 'package:quran_app/helpers/ui_helpers.dart';
 
 
 
+
 class QuranAdvancedSettings extends StatefulWidget {
   const QuranAdvancedSettings({super.key});
 

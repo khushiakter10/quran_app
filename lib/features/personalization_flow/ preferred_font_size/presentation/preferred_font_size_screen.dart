@@ -6,13 +6,14 @@ import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/common_widgets/custom_personalization_button.dart';
-import 'package:quran_app/features/personalization_flow/%20preferred_font_size/widget/custom_fontsizecard.dart';
 import 'package:quran_app/features/personalization_flow/widget_step/custom_stepbar.dart';
 import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
+
+import '../../../account-management/font_size/presentation/font_size_screen.dart';
 
 class PreferredFontSizeScreen extends StatefulWidget {
   const PreferredFontSizeScreen({super.key});
@@ -99,23 +100,23 @@ class _PreferredFontSizeScreenState extends State<PreferredFontSizeScreen> {
                         ),
                       ),
                       UIHelper.verticalSpace(12.h),
-                      ///================ ListView ==============//
+                  ///================ ListView ==============//
 
 
-                      CustomFontSizeCard(title: "Quranic Script",
-                        subtitle: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
-                        fontSize: controller.fontSize + (controller.sliderValues[0] * 14),
+                  CustomFontSizeCard(title: "Quranic Script",
+                          subtitle: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+                          fontSize: controller.fontSize + (controller.sliderValues[0] * 14),
                         fontFamily:controller.getFontFamilyByIndex(
-                            controller.selectedLanguageIndex),
+                                      controller.selectedLanguageIndex),
                         isLight: isLight,
                         sliderValues: controller.sliderValues[0],
                         sliderIndex: 0,
                       ),
                       // UIHelper.verticalSpace(24.h),
 
-                      CustomFontSizeCard(title: "Translation",
-                        subtitle: "In the Name of Allah—the Most Compassionate, Most Merciful.",
-                        fontSize: controller.fontSize + (controller.sliderValues[1] * 14),
+                  CustomFontSizeCard(title: "Translation",
+                          subtitle: "In the Name of Allah—the Most Compassionate, Most Merciful.",
+                          fontSize: controller.fontSize + (controller.sliderValues[1] * 14),
 
                         isLight: isLight,
                         sliderValues: controller.sliderValues[1],
@@ -123,9 +124,9 @@ class _PreferredFontSizeScreenState extends State<PreferredFontSizeScreen> {
                       ),
                       // UIHelper.verticalSpace(24.h),
 
-                      CustomFontSizeCard(title: "Transliteration",
-                        subtitle: "Bismi Allahi alrrahmani alrraheemiِ",
-                        fontSize: controller.fontSize + (controller.sliderValues[2] * 14),
+                  CustomFontSizeCard(title: "Transliteration",
+                          subtitle: "Bismi Allahi alrrahmani alrraheemiِ",
+                          fontSize: controller.fontSize + (controller.sliderValues[2] * 14),
 
                         isLight: isLight,
                         sliderValues: controller.sliderValues[2],
@@ -145,9 +146,10 @@ class _PreferredFontSizeScreenState extends State<PreferredFontSizeScreen> {
       },
     );
   }
-
+ 
 
   Widget _buildNextButton(BuildContext context, UiDarkModeController controller) {
+    
     return CustomPersonalizationButton(
       text: 'Next',
       onPressed: () async {

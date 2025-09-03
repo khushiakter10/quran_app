@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
-import 'package:quran_app/assets_helper/app_fonts.dart';
-import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
-
+import '../../../assets_helper/app_fonts.dart';
+import '../../../assets_helper/app_image.dart';
 
 
 class OnboardingCard1 extends StatelessWidget {

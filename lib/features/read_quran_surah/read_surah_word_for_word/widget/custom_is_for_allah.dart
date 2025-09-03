@@ -10,6 +10,7 @@ import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
+
 class CustomIsForAllah extends StatelessWidget {
   const CustomIsForAllah({
     super.key,
@@ -32,6 +33,8 @@ class CustomIsForAllah extends StatelessWidget {
                 textAlign: TextAlign.right,
                 style: TextFontStyle.titleStyle24w400c000000Persian.copyWith(
                   fontSize: controller.fontSize + (controller.sliderValues[0] * 14),
+                    fontFamily: controller.getFontFamilyByIndex(
+                        controller.selectedLanguageIndex)
                 ),
               ),
 
@@ -42,6 +45,8 @@ class CustomIsForAllah extends StatelessWidget {
                 textAlign: TextAlign.right,
                 style: TextFontStyle.titleStyle24w400c000000Persian.copyWith(
                   fontSize: controller.fontSize + (controller.sliderValues[0] * 14),
+                    fontFamily: controller.getFontFamilyByIndex(
+                        controller.selectedLanguageIndex)
                 ),
               ),
 
@@ -122,6 +127,8 @@ class CustomIsForAllah extends StatelessWidget {
                                   style: TextFontStyle
                                       .titleStyle24w400c000000Persian.copyWith(
                                     fontSize: controller.fontSize + (controller.sliderValues[0] * 14),
+                                      fontFamily: controller.getFontFamilyByIndex(
+                                          controller.selectedLanguageIndex)
                                   ),
                                 ),
                                 UIHelper.verticalSpace(10.h),
@@ -189,6 +196,9 @@ class CustomIsForAllah extends StatelessWidget {
                   textAlign: TextAlign.right,
                   style: TextFontStyle.titleStyle24w400c000000Persian.copyWith(
                     fontSize: controller.fontSize + (controller.sliderValues[0] * 14),
+                      fontFamily: controller.getFontFamilyByIndex(
+                          controller.selectedLanguageIndex)
+
                   ),
                 ),
               )

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:quran_app/assets_helper/app_colors.dart';
+import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
+import 'package:quran_app/common_widgets/custom_personalization_button.dart';
 import 'package:quran_app/features/personalization_flow/widget_step/custom_stepbar.dart';
 import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
@@ -9,7 +12,6 @@ import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 
-import '../../../../common_widgets/custom_personalization_button.dart';
 
 class SelectTafsirUnderstandingScreen extends StatefulWidget {
   const SelectTafsirUnderstandingScreen({super.key});
@@ -97,18 +99,24 @@ class _SelectTafsirUnderstandingScreenState
                       onStepTap: (index) => goToStep(index),
                     ),
                     UIHelper.verticalSpace(24.h),
+
+
                     Text(
                       'Select Tafsir for Deeper Understanding',
-                      style: TextStyle(
-                        color: isStarfield
-                            ? const Color(0xFFF9F6F0)
-                            : (isDarkMode ? Colors.white : Colors.black),
+                      style: TextFontStyle.textStyle18w500cF9F6F0Raleway.copyWith(
                         fontSize: 24.sp,
-                        fontFamily: 'Raleway',
                         fontWeight: FontWeight.w600,
-                        height: 1.32,
+                        color: isStarfield
+                            ?  AppColors.cF9F6F0
+                            : (UiDarkModeHelper.isDarkMode(context)
+                            ? AppColors.cF9F6F0
+                            : AppColors.c000000),
+
                       ),
                     ),
+
+
+
                     UIHelper.verticalSpace(24.h),
                     Expanded(
                       child: ListView.separated(
@@ -120,19 +128,17 @@ class _SelectTafsirUnderstandingScreenState
                         itemBuilder: (context, index) {
                           bool isSelected = selectedLanguageIndex == index;
 
-                          // Define colors and shadow based on theme and selection
                           Color backgroundColor;
                           Color borderColor;
                           Color textColor;
                           List<BoxShadow> boxShadow;
 
                           if (isLightMode) {
-                            // Light mode color settings
                             backgroundColor = isSelected
                                 ? Colors.blue.withOpacity(0.1)
                                 : Colors.white;
                             borderColor = isSelected
-                                ? const Color(0xFF72BBFF)
+                                ?  AppColors.c72BBFF
                                 : Colors.grey.withOpacity(0.2);
                             textColor = isSelected ? Colors.blue : Colors.black;
                             boxShadow = isSelected

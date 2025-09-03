@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,6 +16,7 @@ import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
+
 
 class WriteScreen extends StatefulWidget {
   const WriteScreen({super.key, });

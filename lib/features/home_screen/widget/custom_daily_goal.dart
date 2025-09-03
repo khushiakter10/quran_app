@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
@@ -12,8 +11,9 @@ import 'package:quran_app/helpers/ui_helpers.dart';
 
 class CustomDailyGoal extends StatelessWidget {
   final String title;
+ // final selectedType = controller.selectedReadingType;
 
-  const CustomDailyGoal({
+  CustomDailyGoal({
     super.key,
     required this.title,
   });
@@ -145,10 +145,11 @@ class CustomDailyGoal extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+
+
                       GestureDetector(
-                        onTap: () {
-                          NavigationService.navigateTo(Routes.readSurahVerseByVerseScreen);
-                        },
+                      onTap: (){NavigationService.navigateTo(Routes.readSurahVerseByVerseScreen);},
+
                         child: Text(
                           'Continue Reading',
                           textAlign: TextAlign.center,

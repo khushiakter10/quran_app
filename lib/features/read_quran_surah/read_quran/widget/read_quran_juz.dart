@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:provider/provider.dart';
 import 'package:quran_app/assets_helper/app_colors.dart';
 import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/features/read_quran_juz/juz_english_translation/presentation/juz_english_translation_screen.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
+import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
-
 
 class ReadQuranJuz extends StatelessWidget {
   const ReadQuranJuz({Key? key}) : super(key: key);
@@ -31,6 +32,9 @@ class ReadQuranJuz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    return Consumer<UiDarkModeController>(
+        builder: (context, controller, child) {
     final currentTheme = UiDarkModeHelper.getCurrentTheme(context);
     final isStarfield = currentTheme == UiDarkModeHelper.starfieldTheme;
     final isLight = currentTheme == UiDarkModeHelper.lightTheme;
@@ -53,6 +57,8 @@ class ReadQuranJuz extends StatelessWidget {
           ),
         ),
         itemBuilder: (context, index) {
+
+
           return Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -76,16 +82,20 @@ class ReadQuranJuz extends StatelessWidget {
               ),
               Text(
                 juz[index],
+
                 style: TextFontStyle.textStyle12w500FEFEFERaleway.copyWith(
+                  fontFamily: controller.getFontFamilyByIndex(
+                      controller.selectedLanguageIndex),
                   fontSize: 16.sp,
-                  color: isStarfield ? const Color(0xFFFEFEFE) : (isLight ? Colors.black : Colors.white),
+                  color: isStarfield ?  Color(0xFFFEFEFE) : (isLight ? Colors.black : Colors.white),
                 ),
                 textDirection: TextDirection.rtl,
+
               ),
             ],
           );
         },
       ),
     );
-  }
-}
+  });
+}}

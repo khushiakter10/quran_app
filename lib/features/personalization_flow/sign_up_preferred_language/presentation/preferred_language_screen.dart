@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:quran_app/assets_helper/app_colors.dart';
+import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/common_widgets/custom_personalization_button.dart';
 import 'package:quran_app/features/personalization_flow/sign_up_preferred_language/widget/custom_language_selection_title.dart';
@@ -11,6 +13,7 @@ import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_dark_mood_controller.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
+
 
 class StepController extends GetxController {}
 
@@ -88,7 +91,7 @@ class _PreferredLanguageScreenState extends State<PreferredLanguageScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
+//========================= Custom Stepbar======================//
                           CustomStepBar(
                             isDarkText: isLight,
                             currentStep: 0,
@@ -102,21 +105,23 @@ class _PreferredLanguageScreenState extends State<PreferredLanguageScreen> {
                           ),
 
                           UIHelper.verticalSpace(24.h),
+  //=================== Done =======================//
+
                           Text(
                             'Select Your Preferred Language',
-                            style: TextStyle(
-                              color: isStarfield
-                                  ? const Color(0xFFF9F6F0)
-                                  : (UiDarkModeHelper.isDarkMode(context)
-                                  ? Colors.white
-                                  : Colors.black),
+                            style: TextFontStyle.textStyle18w500cF9F6F0Raleway.copyWith(
                               fontSize: 24.sp,
-                              fontFamily: 'Raleway',
                               fontWeight: FontWeight.w600,
-                              height: 1.32,
+                              color: isStarfield
+                                  ?  AppColors.cF9F6F0
+                                  : (UiDarkModeHelper.isDarkMode(context)
+                                  ? AppColors.cF9F6F0
+                                  : AppColors.c000000),
+
                             ),
                           ),
                           UIHelper.verticalSpace(24.h),
+  //============================ ListView ==========================//
                           Expanded(
                             child: ListView.separated(
                               shrinkWrap: true,
@@ -161,6 +166,5 @@ class _PreferredLanguageScreenState extends State<PreferredLanguageScreen> {
   }
 
   void goToStep(int index) {
-    // Navigation logic
   }
 }

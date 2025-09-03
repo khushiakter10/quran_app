@@ -229,6 +229,10 @@ class _ReadSurahVerseByVerseScreenState extends State<ReadSurahVerseByVerseScree
                                             .copyWith(
                                           fontSize: controller.fontSize +
                                               (controller.sliderValues[0] * 14),
+
+                                          fontFamily: controller.getFontFamilyByIndex(
+                                              controller.selectedLanguageIndex)
+
                                         ),
                                       ),
                                       UIHelper.verticalSpace(20.h),
@@ -240,6 +244,8 @@ class _ReadSurahVerseByVerseScreenState extends State<ReadSurahVerseByVerseScree
                                             .copyWith(
                                           fontSize: controller.fontSize +
                                               (controller.sliderValues[0] * 14),
+                                            fontFamily: controller.getFontFamilyByIndex(
+                                                controller.selectedLanguageIndex)
                                         ),
                                       ),
                                       UIHelper.verticalSpace(26.h),
@@ -306,6 +312,8 @@ class _ReadSurahVerseByVerseScreenState extends State<ReadSurahVerseByVerseScree
                                     ? AppColors.cF9F6F0
                                     : AppColors.c484848),
                                 fontWeight: FontWeight.w400,
+                                fontSize: controller.fontSize +
+                                    (controller.sliderValues[1] * 14),
                               ),
                             ),
                             UIHelper.verticalSpace(30.h),

@@ -7,9 +7,8 @@ import 'package:quran_app/common_widgets/custom_personalization_button.dart';
 import 'package:quran_app/features/account-management/delete_account/widget/delete_diolog_box.dart';
 import 'package:quran_app/features/read_quran_surah/read_quran/widget/custom_appbar.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
-import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
+import 'package:quran_app/helpers/ui_dark_mode_helper.dart' show UiDarkModeHelper;
 import 'package:quran_app/helpers/ui_helpers.dart';
-
 
 
 class DeleteAccountScreen extends StatefulWidget {

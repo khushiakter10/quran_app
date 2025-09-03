@@ -1,6 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:quran_app/assets_helper/app_colors.dart';
+import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/common_widgets/custom_personalization_button.dart';
 import 'package:quran_app/features/personalization_flow/widget_step/custom_stepbar.dart';
@@ -50,7 +53,6 @@ class _SelectQariForRecitationScreenState
 
   @override
   Widget build(BuildContext context) {
-    // Check for light mode, dark mode, and starfield mode
     bool isLightMode = UiDarkModeHelper.isLightMode(context);
     bool isDarkMode = UiDarkModeHelper.isDarkMode(context);
 
@@ -92,18 +94,22 @@ class _SelectQariForRecitationScreenState
                       onStepTap: (index) => goToStep(index),
                     ),
                     UIHelper.verticalSpace(16.h),
+
+
                     Text(
                       'Select a Qari for Recitation',
-                      style: TextStyle(
-                        color: isStarfield
-                            ? const Color(0xFFF9F6F0)
-                            : (isDarkMode ? Colors.white : Colors.black),
+                      style: TextFontStyle.textStyle18w500cF9F6F0Raleway.copyWith(
                         fontSize: 24.sp,
-                        fontFamily: 'Raleway',
                         fontWeight: FontWeight.w600,
-                        height: 1.32,
+                        color: isStarfield
+                            ?  AppColors.cF9F6F0
+                            : (UiDarkModeHelper.isDarkMode(context)
+                            ? AppColors.cF9F6F0
+                            : AppColors.c000000),
+
                       ),
                     ),
+
                     UIHelper.verticalSpace(16.h),
                     Expanded(
                       child: ListView.builder(
@@ -112,7 +118,6 @@ class _SelectQariForRecitationScreenState
                         itemBuilder: (BuildContext context, int index) {
                           bool isSelected = selectedIndex == index;
 
-                          // Define colors and shadow based on theme and selection
                           Color backgroundColor;
                           Color borderColor;
                           Color textColor;

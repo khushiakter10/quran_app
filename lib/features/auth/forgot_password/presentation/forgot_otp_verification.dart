@@ -88,7 +88,7 @@ class _ForgotOtpVerificationScreenState extends State<ForgotOtpVerificationScree
         backgroundColor: AppColors.cFFFFFF,
         resizeToAvoidBottomInset: true,
         body: SafeArea(
-          child: SingleChildScrollView(
+          child:  SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 24.w,vertical: 10.h),
             child: Form(
               key: _formKey,
@@ -192,7 +192,7 @@ class _ForgotOtpVerificationScreenState extends State<ForgotOtpVerificationScree
 
 
 
-///++++++++++++++++++++++++++ Done +++++++++++++++++++++++++++++++++++++///
+                  ///++++++++++++++++++++++++++ Done +++++++++++++++++++++++++++++++++++++///
 
 
 
@@ -269,6 +269,8 @@ class _ForgotOtpVerificationScreenState extends State<ForgotOtpVerificationScree
               ),
             ),
           ),
+
+
         ),
       ),
     );

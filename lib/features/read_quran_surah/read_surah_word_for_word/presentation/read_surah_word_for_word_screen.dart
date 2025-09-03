@@ -75,6 +75,11 @@ class _ReadSurahWordForWordScreenState
            //================================ AppBar ======================///
 
 
+
+
+
+
+
                 CustomAppbarWidget(
                   onTap:  (){NavigationService.navigateTo(Routes.readQuranSurahScreen);},
                   text: '1. Al-Fatihah',
@@ -258,6 +263,8 @@ class _ReadSurahWordForWordScreenState
                                     'الْحَمْدُ',
                                     style: TextFontStyle.titleStyle24w400c000000Persian.copyWith(
                                       fontSize: controller.fontSize + (controller.sliderValues[0] * 14),
+                                        fontFamily: controller.getFontFamilyByIndex(
+                                            controller.selectedLanguageIndex)
                                     )
                                   ),
                                 ],

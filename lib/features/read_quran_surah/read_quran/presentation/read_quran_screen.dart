@@ -7,16 +7,15 @@ import 'package:quran_app/assets_helper/app_fonts.dart';
 import 'package:quran_app/assets_helper/app_icons.dart';
 import 'package:quran_app/assets_helper/app_image.dart';
 import 'package:quran_app/common_widgets/custom_text_formfield.dart';
+import 'package:quran_app/features/learning/learning_two/widget/learning_surah.dart';
 import 'package:quran_app/features/read_quran_surah/read_quran/widget/custom_appbar.dart';
 import 'package:quran_app/features/read_quran_surah/read_quran/widget/custom_continue-reading.dart';
 import 'package:quran_app/features/read_quran_surah/read_quran/widget/read_quran_juz.dart';
-import 'package:quran_app/features/read_quran_surah/read_quran/widget/read_quran_surah.dart';
 import 'package:quran_app/features/read_quran_surah/search_for_word/presentation/search_for_word_screen.dart';
 import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
-
 
 
 
@@ -111,7 +110,7 @@ class _ReadQuranSurahScreenState extends State<ReadQuranSurahScreen>
                     hintStyle: TextFontStyle.textStyle14w400cB1AFAARaleway,
                     textStyle: TextStyle(
                       color: isStarfield
-                          ?  Color(0xFFFEFEFE)
+                          ? const Color(0xFFFEFEFE)
                           : (isLight ? Colors.black : AppColors.cF9F6F0),
                     ),
                     prefixIcon: GestureDetector(

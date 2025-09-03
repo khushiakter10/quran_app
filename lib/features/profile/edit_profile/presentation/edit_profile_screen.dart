@@ -11,7 +11,6 @@ import 'package:quran_app/helpers/all_routes.dart';
 import 'package:quran_app/helpers/navigation_service.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 import 'package:quran_app/helpers/ui_helpers.dart';
-
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
 
@@ -105,7 +104,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> with TickerProvid
                           borderColor: Colors.transparent,
                           fillColor: isLight
                               ? AppColors.cF9F6F0
-                              :  Color(0xB2061420),
+                              : const Color(0xB2061420),
                           textStyle: TextStyle(
                             color: isLight ? Colors.black : AppColors.cFFFFFF,
                             fontSize: 10.sp,

@@ -6,11 +6,9 @@ import 'package:quran_app/assets_helper/app_icons.dart';
 import 'package:quran_app/features/community/community/presentation/community_screen.dart';
 import 'package:quran_app/features/home_screen/presentation/home_screen.dart';
 import 'package:quran_app/features/learning/learning_one/presentation/learning_one_screen.dart';
-import 'package:quran_app/features/profile/profile/presentation/profile_screen.dart';
 import 'package:quran_app/helpers/ui_dark_mode_helper.dart';
 
-
-
+import 'profile/profile/presentation/profile_screen.dart';
 
 
 
